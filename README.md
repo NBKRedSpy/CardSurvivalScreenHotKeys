@@ -47,7 +47,7 @@ This resets the game to an unmodded state.
 Delete the BepInEx folder from the game's directory
 ```<Steam Directory>\steamapps\common\Card Survival Tropical Island\BepInEx```
 
-## Only Uninstalling This Mod.
+## Only Uninstalling This Mod
 
 This method removes this mod, but keeps the BepInEx mod loader any any other mods.
 

@@ -27,11 +27,28 @@ namespace ScreenHotKeys
             OnButtonClickedMethodInfo = AccessTools.Method(typeof(InspectionPopup), "OnButtonClicked", new[] { typeof(int), typeof(bool) });
         }
 
+
         public static void Postfix(InspectionPopup __instance)
         {
+
             if (Input.GetKey(KeyCode.Space))
             {
-                OnButtonClickedMethodInfo.Invoke(__instance, new object[] { 0, false });
+                if (__instance.EmptyInventoryButton != null)
+                {
+                    //Assume the user wants to empty.
+                    if (__instance.EmptyInventoryButton.interactable)
+                    {
+                        __instance.EmptyInventory();
+                    }
+
+                    //All other actions are ignored.  They should be dissasemble or put out fire, etc.
+                    return;
+                }
+                else
+                {
+                    //Execute the first action
+                    OnButtonClickedMethodInfo.Invoke(__instance, new object[] { 0, false });
+                }
             }
 
         }

@@ -1,3 +1,5 @@
+![Keyboard Icon](Media\computer-keyboard_64.png)
+
 # Screen Hot Keys
 
 A modification for the Card Survival Game.
@@ -55,5 +57,7 @@ Safe to add and remove from existing saves.
 
 The UnityExplorer mod interferes with the hotkey handling.
 
+# Acknowledgments
+Electric keyboard icon created by yoyonpujiono https://www.flaticon.com/free-icons/electric-keyboard
 
 

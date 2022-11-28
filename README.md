@@ -60,4 +60,8 @@ The UnityExplorer mod interferes with the hotkey handling.
 # Acknowledgments
 Electric keyboard icon created by yoyonpujiono https://www.flaticon.com/free-icons/electric-keyboard
 
+# Change Log
+# 1.0.2
+* Changed GetKey to GetKeyDown to avoid repeating executions.
+* Fixed accept looking for Escape and Space instead of just Space.
 

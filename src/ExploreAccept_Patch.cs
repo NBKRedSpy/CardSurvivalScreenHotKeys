@@ -29,9 +29,8 @@ namespace ScreenHotKeys
 
         public static void Prefix(GraphicsManager __instance)
         {
-            if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.Escape))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
-
                 ClickMainButtonMethodInfo.Invoke(__instance, null);
                 return;
             }

@@ -31,7 +31,7 @@ namespace ScreenHotKeys
         public static void Postfix(InspectionPopup __instance)
         {
 
-            if (Input.GetKey(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
                 if (__instance.EmptyInventoryButton != null)
                 {

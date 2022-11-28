@@ -1,4 +1,4 @@
-![Keyboard Icon](Media\computer-keyboard_64.png)
+![Keyboard Icon](./Media/computer-keyboard_64.png)
 
 # Screen Hot Keys
 

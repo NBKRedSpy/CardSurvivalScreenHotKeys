@@ -27,9 +27,10 @@ namespace ScreenHotKeys
             ClickMainButtonMethodInfo = AccessTools.Method(typeof(ExplorationPopup), "ClickMainButton");
         }
 
-        public static void Prefix(GraphicsManager __instance)
+        public static void Prefix(GraphicsManager __instance, DismantleActionButton ___MainButton)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            //check for key and enabled button.
+            if (Input.GetKeyDown(KeyCode.Space) && ___MainButton.Interactable)
             {
                 ClickMainButtonMethodInfo.Invoke(__instance, null);
                 return;

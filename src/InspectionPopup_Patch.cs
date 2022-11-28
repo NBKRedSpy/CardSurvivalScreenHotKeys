@@ -28,11 +28,12 @@ namespace ScreenHotKeys
         }
 
 
-        public static void Postfix(InspectionPopup __instance)
+        public static void Postfix(InspectionPopup __instance, List<DismantleActionButton> ___OptionsButtons)
         {
 
             if (Input.GetKeyDown(KeyCode.Space))
             {
+                //Check for a container screen.
                 if (__instance.EmptyInventoryButton != null)
                 {
                     //Assume the user wants to empty.
@@ -46,8 +47,13 @@ namespace ScreenHotKeys
                 }
                 else
                 {
-                    //Execute the first action
-                    OnButtonClickedMethodInfo.Invoke(__instance, new object[] { 0, false });
+                    //check for diabled.  Generally dark.
+                    if (___OptionsButtons[0].Interactable)
+                    {
+                        //Execute the first action
+                        OnButtonClickedMethodInfo.Invoke(__instance, new object[] { 0, false });
+                    }
+
                 }
             }
 

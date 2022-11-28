@@ -7,6 +7,8 @@ A modification for the Card Survival Game.
 Adds the following hotkeys:
 * Escape closes most dialogs.
 * Space accepts most action dialogs.
+* C opens the Character window.
+* B opens the Blueprint window.
 
 # Accepting Actions
 If there is more than one button on a dialog, the left most button will be activated.
@@ -64,4 +66,9 @@ Electric keyboard icon created by yoyonpujiono https://www.flaticon.com/free-ico
 # 1.0.2
 * Changed GetKey to GetKeyDown to avoid repeating executions.
 * Fixed accept looking for Escape and Space instead of just Space.
+
+# 1.0.3
+* Added Character and Blueprint windows.
+* Fixed disabled buttons invoking.  For example, at night.
+
 

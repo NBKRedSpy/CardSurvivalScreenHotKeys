@@ -28,10 +28,11 @@ namespace ScreenHotKeys
         }
 
 
-        public static void Postfix(InspectionPopup __instance, List<DismantleActionButton> ___OptionsButtons)
+        public static void Prefix(InspectionPopup __instance, List<DismantleActionButton> ___OptionsButtons, ref bool __runOriginal)
         {
 
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (GraphicsManager_Patch.MoveCardLine(null, __instance.InventorySlotsLine, Plugin.ScrollLeftKey, Plugin.ScrollRightKey, ref __runOriginal)) { }
+            else if (Input.GetKeyDown(Plugin.ConfirmActionKey))
             {
                 //Check for a container screen.
                 if (__instance.EmptyInventoryButton != null)

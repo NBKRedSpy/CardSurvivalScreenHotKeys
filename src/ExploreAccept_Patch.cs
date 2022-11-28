@@ -30,7 +30,7 @@ namespace ScreenHotKeys
         public static void Prefix(GraphicsManager __instance, DismantleActionButton ___MainButton)
         {
             //check for key and enabled button.
-            if (Input.GetKeyDown(KeyCode.Space) && ___MainButton.Interactable)
+            if (Input.GetKeyDown(Plugin.ConfirmActionKey) && ___MainButton.Interactable)
             {
                 ClickMainButtonMethodInfo.Invoke(__instance, null);
                 return;

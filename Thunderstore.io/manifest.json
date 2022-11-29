@@ -1,0 +1,9 @@
+{
+    "name": "Screen_Hotkeys",
+    "version_number": "1.0.4",
+    "website_url": "https://github.com/NBKRedSpy/CardSurvivalScreenHotKeys",
+    "description": "Adds hotkeys to accept various actions.  Accept action, close window, etc.",
+	"dependencies": [
+		"BepInEx-BepInExPack_Stacklands-5.4.2100"
+	]
+}

@@ -47,5 +47,18 @@ namespace ScreenHotKeys
         }
 
 
+        public static string GetGameObjectPath(GameObject obj)
+        {
+            GameObject searchObject = obj;
+
+            string path = "/" + searchObject.name;
+            while (searchObject.transform.parent != null)
+            {
+                searchObject = searchObject.transform.parent.gameObject;
+                path = "/" + searchObject.name + path;
+            }
+            return path;
+        }
+
     }
 }

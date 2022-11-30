@@ -13,6 +13,13 @@ namespace ScreenHotKeys
     {
         public static void Prefix(CharacterScreen __instance, ref bool __runOriginal)
         {
+
+            //Do not execute hotkeys if the user is in the guide screen.  It interferes with the search
+            if (GraphicsManager_Patch.IsGuideScreenOpen())
+            {
+                return;
+            }
+
             GraphicsManager_Patch.MoveCardLine(null, __instance.EquipmentSlotsLine, Plugin.ScrollLeftKey, Plugin.ScrollRightKey, ref __runOriginal);
         }
 

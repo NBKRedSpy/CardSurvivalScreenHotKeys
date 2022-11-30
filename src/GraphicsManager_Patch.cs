@@ -7,36 +7,72 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Bindings;
+using UnityEngine.UI;
 
 namespace ScreenHotKeys
 {
 
     [HarmonyPatch(typeof(GraphicsManager), "Update")]
-    internal class GraphicsManager_Patch
+    internal static class GraphicsManager_Patch
     {
-        public static FieldInfo ButtonMoveTargetInfo = AccessTools.Field(typeof(CardLine), "ButtonMoveTarget");
+        private static FieldInfo ButtonMoveTargetInfo = AccessTools.Field(typeof(CardLine), "ButtonMoveTarget");
+        private static Button CardDestoryButton;
+        private static Button CharacterButton;
 
-        public static void Prefix(GraphicsManager __instance, ref bool __runOriginal)
+        private static FieldInfo GuideFieldInfo = AccessTools.Field(typeof(GameManager), "Guide");
+
+        /// <summary>
+        /// The card info screen.
+        /// </summary>
+        private static GameObject GuideScreenGameObject;
+
+
+        public static bool IsGuideScreenOpen()
         {
+            return GuideScreenGameObject?.activeInHierarchy ?? false;
+        }
+
+        public static void Prefix(GraphicsManager __instance, GameManager ___GM, ref bool __runOriginal)
+        {
+            if (GuideScreenGameObject == null)
+            {
+                ContentDisplayer guideScreen;
+                guideScreen = (ContentDisplayer)GuideFieldInfo.GetValue(___GM);
+                GuideScreenGameObject = guideScreen?.gameObject;
+            }
+
+            //Do not execute hotkeys if the user is in the guide screen.  It interferes with the search
+            if (IsGuideScreenOpen())
+            {
+                return;
+            }
 
             if (Input.GetKeyDown(Plugin.BlueprintScreenKey))
             {
-                if (__instance.HasPopup == false && __instance.BlueprintModelsPopup.gameObject.activeInHierarchy == false)
+                Button button = __instance.BlueprintsButtonTr.gameObject.GetComponent<Button>();
+
+                if(button.isActiveAndEnabled && button.IsInteractable())
                 {
-                    __instance.BlueprintModelsPopup.Show();
-                    __runOriginal = false;
+                    button.onClick.Invoke();
                 }
+                __runOriginal = false;
             }
             //Character window
             else if (Input.GetKeyDown(Plugin.CharacterScreenKey))
             {
-                if (__instance.HasPopup == false && __instance.CharacterWindow.gameObject.activeInHierarchy == false)
+
+                //Encounter screen.  For example, Seagull raid.
+                if (CharacterButton == null)
                 {
-                    __instance.CloseAllPopups();
-                    __instance.CharacterWindow.Open();
-                    __runOriginal = false;
+                    CharacterButton = GameObject.Find(
+                        "MainCanvas/StatsCanvas/Equipment_Large_Bar/ButtonObject")
+                        .GetComponent<Button>();
                 }
-                
+
+                if (CharacterButton.isActiveAndEnabled && CharacterButton.IsInteractable())
+                {
+                    CharacterButton.onClick.Invoke();
+                }
             }
             //Closes all popups with the escape key
             else if (Input.GetKeyDown(Plugin.ExitScreenKey) && (__instance.HasPopup || __instance.StatInspection.gameObject.activeInHierarchy))
@@ -44,6 +80,21 @@ namespace ScreenHotKeys
                 __instance.CloseAllPopups();
                 __runOriginal = false;
                 return;
+            }
+            else if (Input.GetKeyDown(Plugin.ConfirmActionKey))
+            {
+                //Encounter screen.  For example, Seagull raid.
+                if(CardDestoryButton == null)
+                {
+                    CardDestoryButton = GameObject.Find(
+                        "MainCanvas/TooltipRect/DestroyedCardsPopup/ShadowAndPopupWithTitle/Content/Content/ButtonBase/ButtonObject")
+                        .GetComponent<Button>();
+                }
+
+                if(CardDestoryButton.isActiveAndEnabled && CardDestoryButton.IsInteractable() )
+                {
+                    CardDestoryButton.onClick.Invoke();
+                }
             }
             //LocationSlots is the top line
             //BaseSlots is the middle line.

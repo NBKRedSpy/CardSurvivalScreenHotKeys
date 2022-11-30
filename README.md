@@ -79,6 +79,12 @@ The UnityExplorer mod interferes with the hotkey handling when the UI is visible
 Electric keyboard icon created by yoyonpujiono https://www.flaticon.com/free-icons/electric-keyboard
 
 # Change Log
+# 1.0.5
+* Converted actions to use the game's buttons instead of calling functions directly.  Should be much safer for game logic.
+* Added Raid Encounter screen actions.
+* Blueprint and Character screens can now be closed with the same open key.  Example:  B opens, B closes.
+* Fixed: Character and Blueprint hotkeys would close the Guide screen.
+
 # 1.0.4
 * Added card line scrolling.
 * Added key rebinding.

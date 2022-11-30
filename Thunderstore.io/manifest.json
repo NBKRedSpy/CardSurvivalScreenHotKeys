@@ -1,6 +1,6 @@
 {
     "name": "Screen_Hotkeys",
-    "version_number": "1.0.4",
+    "version_number": "1.0.5",
     "website_url": "https://github.com/NBKRedSpy/CardSurvivalScreenHotKeys",
     "description": "Adds hotkeys to accept various actions.  Accept action, close window, etc.",
 	"dependencies": [

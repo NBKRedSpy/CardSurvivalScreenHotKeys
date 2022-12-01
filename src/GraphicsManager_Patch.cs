@@ -47,7 +47,20 @@ namespace ScreenHotKeys
                 return;
             }
 
-            if (Input.GetKeyDown(Plugin.BlueprintScreenKey))
+            //Debug update
+            if (Input.GetKeyDown(Plugin.WaitingOptionsKey))
+            {
+
+                Button button = GameObject.Find("MainCanvas/StatsCanvas/TimeSkip/ButtonObject").GetComponent<Button>();
+
+                if (button.isActiveAndEnabled && button.IsInteractable())
+                {
+                    button.onClick.Invoke();
+                }
+
+                __runOriginal = false;
+            }
+            else if (Input.GetKeyDown(Plugin.BlueprintScreenKey))
             {
                 Button button = __instance.BlueprintsButtonTr.gameObject.GetComponent<Button>();
 

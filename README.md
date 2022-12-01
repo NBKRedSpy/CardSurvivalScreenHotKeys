@@ -11,6 +11,7 @@ Adds the following hotkeys:
 * B opens the Blueprint window.
 * Q and W scrolls the location cards.
 * A and S scrolls most card lines.
+* T Waiting Options (Rest/Sleep screen)
 
 The keys can be customized.
 
@@ -79,6 +80,8 @@ The UnityExplorer mod interferes with the hotkey handling when the UI is visible
 Electric keyboard icon created by yoyonpujiono https://www.flaticon.com/free-icons/electric-keyboard
 
 # Change Log
+# 1.0.6
+* Added Waiting Options hot key (sleep/rest)
 # 1.0.5
 * Converted actions to use the game's buttons instead of calling functions directly.  Should be much safer for game logic.
 * Added Raid Encounter screen actions.

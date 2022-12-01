@@ -21,6 +21,7 @@ namespace ScreenHotKeys
         public static KeyCode BlueprintScreenKey;
         public static KeyCode ConfirmActionKey;
         public static KeyCode ExitScreenKey;
+        public static KeyCode WaitingOptionsKey;
 
         public static ManualLogSource Log { get; set; }
         private void Awake()
@@ -43,7 +44,7 @@ namespace ScreenHotKeys
             BlueprintScreenKey = Config.Bind(sectionName, nameof(BlueprintScreenKey), KeyCode.B, "Open the Blueprint screen").Value;
             ConfirmActionKey = Config.Bind(sectionName, nameof(ConfirmActionKey), KeyCode.Space, "Accept the dialog's left most action").Value;
             ExitScreenKey = Config.Bind(sectionName, nameof(ExitScreenKey), KeyCode.Escape, "Close the current dialog").Value;
-
+            WaitingOptionsKey = Config.Bind(sectionName, nameof(WaitingOptionsKey), KeyCode.T, "Opens the Waiting Options dialog (rest/sleep, etc.)").Value;
         }
 
 

@@ -1,5 +1,12 @@
 ![Keyboard Icon](./Media/computer-keyboard_64.png)
 
+
+## Version Note
+This is for the game version 1.01r.  As of 12/2/2022 1.01r is the current version.
+For version 1.02 (the beta version) use the Screen Hotkeys mod from one of these locations:
+
+* Todo:  Get link for nexus mods
+* https://github.com/NBKRedSpy/CardSurvival-RemapHotkeys/releases/
 # Screen Hot Keys
 
 A modification for the Card Survival Game.
